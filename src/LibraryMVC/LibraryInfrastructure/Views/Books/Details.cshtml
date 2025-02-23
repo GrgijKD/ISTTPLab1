@@ -1,0 +1,72 @@
+﻿@model LibraryDomain.Model.Book
+
+@{
+    ViewData["Title"] = "Детальніше";
+}
+
+<h1>Детальніше про книгу</h1>
+
+<div>
+    <h4>Книга</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Назва
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Title
+        </dd>
+        <dt class="col-sm-2">
+            Ким додано
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Worker?.FullName
+        </dd>
+        <dt class="col-sm-2">
+            Видавництво
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Publisher?.Name
+        </dd>
+        <dt class="col-sm-2">
+            Автор
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.AuthorsBooks?.Any() == true)
+            {
+                <ul>
+                    @foreach (var author in Model.AuthorsBooks)
+                    {
+                        <li>@author.Author.FullName</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span>Автори не вказані</span>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Жанр
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.GenresBooks?.Any() == true)
+            {
+                <ul>
+                    @foreach (var genre in Model.GenresBooks)
+                    {
+                        <li>@genre.Genre.GenreName</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span>Жанри не вказані</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Редагувати</a>
+    <a asp-action="Index" class="btn btn-secondary">Повернутися</a>
+</div>
