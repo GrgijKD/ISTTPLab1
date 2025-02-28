@@ -1,4 +1,4 @@
-#nullable disable
+п»ї#nullable disable
 
 using System;
 using System.Collections.Generic;
@@ -63,19 +63,18 @@ namespace LibraryInfrastructure.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "Пароль має бути не менше {2} і не більше {1} символів.", MinimumLength = 5)]
+            [StringLength(100, ErrorMessage = "РџР°СЂРѕР»СЊ РјР°С” Р±СѓС‚Рё РЅРµ РјРµРЅС€Рµ {2} С– РЅРµ Р±С–Р»СЊС€Рµ {1} СЃРёРјРІРѕР»С–РІ.", MinimumLength = 5)]
             [DataType(DataType.Password)]
-            [Display(Name = "Пароль")]
+            [Display(Name = "РџР°СЂРѕР»СЊ")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Підтвердження пароля")]
-            [Compare("Password", ErrorMessage = "Паролі не співпадають.")]
+            [Display(Name = "РџС–РґС‚РІРµСЂРґР¶РµРЅРЅСЏ РїР°СЂРѕР»СЏ")]
+            [Compare("Password", ErrorMessage = "РџР°СЂРѕР»С– РЅРµ СЃРїС–РІРїР°РґР°СЋС‚СЊ.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
-            [Display(Name = "Повне ім'я")]
-            public string FullName { get; set; } // Додаємо поле для імені користувача
+            [Display(Name = "РџРѕРІРЅРµ С–Рј'СЏ")]
+            public string FullName { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -88,8 +87,16 @@ namespace LibraryInfrastructure.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
+                var existingUser = await _userManager.FindByEmailAsync(Input.Email);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError(nameof(Input.Email), "РљРѕСЂРёСЃС‚СѓРІР°С‡ Р· С‚Р°РєРёРјРё РґР°РЅРёРјРё РІР¶Рµ С–СЃРЅСѓС”");
+                    return Page();
+                }
+
                 var user = CreateUser();
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
@@ -149,8 +156,8 @@ namespace LibraryInfrastructure.Areas.Identity.Pages.Account
             }
             catch
             {
-                throw new InvalidOperationException($"Не вдалося створити екземпляр '{nameof(ApplicationUser)}'. " +
-                    $"Переконайтеся, що '{nameof(ApplicationUser)}' має конструктор без параметрів.");
+                throw new InvalidOperationException($"РќРµ РІРґР°Р»РѕСЃСЏ СЃС‚РІРѕСЂРёС‚Рё РµРєР·РµРјРїР»СЏСЂ '{nameof(ApplicationUser)}'. " +
+                    $"РџРµСЂРµРєРѕРЅР°Р№С‚РµСЃСЏ, С‰Рѕ '{nameof(ApplicationUser)}' РјР°С” РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂС–РІ.");
             }
         }
 
@@ -158,7 +165,7 @@ namespace LibraryInfrastructure.Areas.Identity.Pages.Account
         {
             if (!_userManager.SupportsUserEmail)
             {
-                throw new NotSupportedException("Цей UI вимагає збереження користувачів з підтримкою email.");
+                throw new NotSupportedException("Р¦РµР№ UI РІРёРјР°РіР°С” Р·Р±РµСЂРµР¶РµРЅРЅСЏ РєРѕСЂРёСЃС‚СѓРІР°С‡С–РІ Р· РїС–РґС‚СЂРёРјРєРѕСЋ email.");
             }
             return (IUserEmailStore<ApplicationUser>)_userStore;
         }

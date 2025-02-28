@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\libraryinfrastructure\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|solutionrelative:libraryinfrastructure\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\libraryinfrastructure\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|solutionrelative:libraryinfrastructure\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\libraryinfrastructure\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|solutionrelative:libraryinfrastructure\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\libraryinfrastructure\\controllers\\bookreservationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|solutionrelative:libraryinfrastructure\\controllers\\bookreservationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\libraryinfrastructure\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|solutionrelative:libraryinfrastructure\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\libraryinfrastructure\\views\\books\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|solutionrelative:libraryinfrastructure\\views\\books\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\libraryinfrastructure\\views\\books\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|solutionrelative:libraryinfrastructure\\views\\books\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\libraryinfrastructure\\views\\books\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|solutionrelative:libraryinfrastructure\\views\\books\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F696297B-ABCA-4BBB-BE96-5EAC0C49E754}|LibraryDomain\\LibraryDomain.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\librarydomain\\model\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F696297B-ABCA-4BBB-BE96-5EAC0C49E754}|LibraryDomain\\LibraryDomain.csproj|solutionrelative:librarydomain\\model\\worker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|c:\\users\\user\\\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0443\u043D\u0438\u0432\u0435\u0440\\\u043F\u0440\u043E\u0433\u0430\\isttplab1\\src\\librarymvc\\libraryinfrastructure\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C7AC72A8-2745-4E8B-839B-74C2C05E3E9A}|LibraryInfrastructure\\LibraryInfrastructure.csproj|solutionrelative:libraryinfrastructure\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,80 +38,80 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Delete.cshtml",
-              "RelativeDocumentMoniker": "LibraryInfrastructure\\Views\\Books\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Delete.cshtml",
-              "RelativeToolTip": "LibraryInfrastructure\\Views\\Books\\Delete.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-23T14:25:55.571Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Edit.cshtml",
-              "RelativeDocumentMoniker": "LibraryInfrastructure\\Views\\Books\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Edit.cshtml",
-              "RelativeToolTip": "LibraryInfrastructure\\Views\\Books\\Edit.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAABnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-23T14:22:42.07Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Worker.cs",
-              "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryDomain\\Model\\Worker.cs",
-              "RelativeDocumentMoniker": "LibraryDomain\\Model\\Worker.cs",
-              "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryDomain\\Model\\Worker.cs",
-              "RelativeToolTip": "LibraryDomain\\Model\\Worker.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T13:58:40.624Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Create.cshtml",
-              "RelativeDocumentMoniker": "LibraryInfrastructure\\Views\\Books\\Create.cshtml",
-              "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Create.cshtml",
-              "RelativeToolTip": "LibraryInfrastructure\\Views\\Books\\Create.cshtml",
-              "ViewState": "AgIAABYAAAAAAAAAAAAmwCYAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-23T12:22:27.745Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Program.cs",
               "RelativeDocumentMoniker": "LibraryInfrastructure\\Program.cs",
               "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Program.cs",
               "RelativeToolTip": "LibraryInfrastructure\\Program.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC0AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T13:56:29.498Z",
+              "WhenOpened": "2025-02-28T08:54:22.53Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "LibraryInfrastructure\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "LibraryInfrastructure\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAACwAAAAAAAAAAAAiwEUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-02-28T08:30:03.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Details.cshtml",
+              "RelativeDocumentMoniker": "LibraryInfrastructure\\Views\\Books\\Details.cshtml",
+              "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Details.cshtml",
+              "RelativeToolTip": "LibraryInfrastructure\\Views\\Books\\Details.cshtml",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAEYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-28T08:20:56.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "BooksController.cs",
               "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Controllers\\BooksController.cs",
               "RelativeDocumentMoniker": "LibraryInfrastructure\\Controllers\\BooksController.cs",
               "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Controllers\\BooksController.cs",
               "RelativeToolTip": "LibraryInfrastructure\\Controllers\\BooksController.cs",
-              "ViewState": "AgIAAI8BAAAAAAAAAAAiwJ4BAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAowJAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T14:14:32.973Z",
+              "WhenOpened": "2025-02-27T12:50:41.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookReservationsController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Controllers\\BookReservationsController.cs",
+              "RelativeDocumentMoniker": "LibraryInfrastructure\\Controllers\\BookReservationsController.cs",
+              "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Controllers\\BookReservationsController.cs",
+              "RelativeToolTip": "LibraryInfrastructure\\Controllers\\BookReservationsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAkwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T12:46:26.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Index.cshtml",
+              "RelativeDocumentMoniker": "LibraryInfrastructure\\Views\\Books\\Index.cshtml",
+              "ToolTip": "C:\\Users\\User\\\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0438\\\u0423\u043D\u0438\u0432\u0435\u0440\\\u041F\u0440\u043E\u0433\u0430\\ISTTPLab1\\src\\LibraryMVC\\LibraryInfrastructure\\Views\\Books\\Index.cshtml",
+              "RelativeToolTip": "LibraryInfrastructure\\Views\\Books\\Index.cshtml",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAowF0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-27T12:45:18.455Z",
               "EditorCaption": ""
             }
           ]

@@ -19,7 +19,7 @@
 @if (User.IsInRole("Admin"))
 {
     <p>
-        <a asp-action="Create" class="btn btn-success">Додати нову книгу</a>
+        <a asp-action="Create" class="btn">Додати нову книгу</a>
     </p>
 }
 
@@ -63,9 +63,17 @@
                     }
                 </td>
                 <td>
-                    @if (item.IsBorrowedByUser)
+                    @if (item.Book.BookReservations.Any())
                     {
-                        <span class="text-warning">Позичено вами</span>
+                        var reservation = item.Book.BookReservations.OrderByDescending(br => br.ReservationDate).FirstOrDefault();
+                        var statusClass = reservation?.Status switch
+                        {
+                            "Заброньована" => "text-warning",
+                            "Позичена" => "text-danger",
+                            "Прострочена" => "text-danger",
+                            _ => "text-success"
+                        };
+                        <span class="@statusClass">@reservation?.Status</span>
                     }
                     else if (item.Book.ClientsBooks.Any(cb => cb.ReturnDate == null))
                     {
@@ -77,28 +85,12 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Book.Id" class="btn btn-info">Детальніше</a>
+                    <a asp-action="Details" asp-route-id="@item.Book.Id" class="btn">Детальніше</a>
 
                     @if (User.IsInRole("Admin"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Book.Id" class="btn btn-warning">Редагувати</a>
-                        <a asp-action="Delete" asp-route-id="@item.Book.Id" class="btn btn-danger">Видалити</a>
-                    }
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        @if (item.IsBorrowedByUser)
-                        {
-                            <form asp-action="Return" asp-controller="Books" asp-route-id="@item.Book.Id" method="post" style="display:inline;">
-                                <button type="submit" class="btn btn-danger">Повернути</button>
-                            </form>
-                        }
-                        else if (!item.Book.ClientsBooks.Any(cb => cb.ReturnDate == null))
-                        {
-                            <form asp-action="Borrow" asp-controller="Books" asp-route-id="@item.Book.Id" method="post" style="display:inline;">
-                                <button type="submit" class="btn btn-success">Позичити</button>
-                            </form>
-                        }
+                        <a asp-action="Edit" asp-route-id="@item.Book.Id" class="btn">Редагувати</a>
+                        <a asp-action="Delete" asp-route-id="@item.Book.Id" class="btn">Видалити</a>
                     }
                 </td>
             </tr>

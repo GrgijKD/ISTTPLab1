@@ -305,4 +305,5 @@ C:\Users\User\Загрузки\Универ\Прога\ISTTPLab1\src\LibraryMVC\
 C:\Users\User\Загрузки\Универ\Прога\ISTTPLab1\src\LibraryMVC\LibraryInfrastructure\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\User\Загрузки\Универ\Прога\ISTTPLab1\src\LibraryMVC\LibraryInfrastructure\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\Users\User\Загрузки\Универ\Прога\ISTTPLab1\src\LibraryMVC\LibraryInfrastructure\obj\Debug\net8.0\LibraryInfrastructure.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\Загрузки\Универ\Прога\ISTTPLab1\src\LibraryMVC\LibraryInfrastructure\obj\Debug\net8.0\LibraryInfrastructure.sourcelink.json
 C:\Users\User\Загрузки\Универ\Прога\ISTTPLab1\src\LibraryMVC\LibraryInfrastructure\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,4 +1,5 @@
 ﻿@model LibraryDomain.Model.Book
+@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Детальніше";
@@ -67,6 +68,40 @@
     </dl>
 </div>
 <div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form asp-controller="BookReservations" asp-action="Reserve" method="post">
+            <input type="hidden" name="bookId" value="@Model.Id" />
+            <label>Кількість днів:</label>
+            <input type="number" name="days" min="1" class="form-control" required />
+            <button type="submit" class="btn btn-primary mt-2">Забронювати</button>
+        </form>
+    }
+
+    @if (User.Identity.IsAuthenticated && Model.BookReservations.Any(br => br.UserId == UserManager.GetUserId(User) && br.Status == "Позичена"))
+    {
+        <form asp-action="Return" asp-controller="Books" method="post" class="mt-3">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <button type="submit" class="btn btn-danger">Повернути</button>
+        </form>
+    }
+
+    @if (User.IsInRole("Librarian"))
+    {
+        <form asp-action="ChangeStatus" asp-controller="Books" method="post" class="mt-3">
+            <input type="hidden" name="bookId" value="@Model.Id" />
+            <div class="input-group">
+                <select name="newStatus" class="form-select">
+                    <option value="Заброньована">Заброньована</option>
+                    <option value="Позичена">Позичена</option>
+                    <option value="Прострочена">Прострочена</option>
+                    <option value="Доступна">Доступна</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Змінити статус</button>
+            </div>
+        </form>
+    }
+
     <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Редагувати</a>
     <a asp-action="Index" class="btn btn-secondary">Повернутися</a>
 </div>

@@ -21,4 +21,6 @@ public partial class Book: Entity
     public virtual ICollection<ClientsBook> ClientsBooks { get; set; } = new List<ClientsBook>();
 
     public virtual ICollection<GenresBook> GenresBooks { get; set; } = new List<GenresBook>();
+
+    public virtual ICollection<BookReservation> BookReservations { get; set; } = new List<BookReservation>();
 }

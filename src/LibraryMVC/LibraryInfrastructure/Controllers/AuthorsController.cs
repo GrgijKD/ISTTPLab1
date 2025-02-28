@@ -54,13 +54,13 @@ namespace LibraryInfrastructure.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FullName,Country,Id")] Author author)
+        public async Task<IActionResult> Create([Bind("FullName,Country,Id")] Author author, string? returnUrl)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(author);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Books/Create");
             }
             return View(author);
         }

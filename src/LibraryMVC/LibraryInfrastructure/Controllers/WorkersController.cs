@@ -60,7 +60,7 @@ namespace LibraryInfrastructure.Controllers
             {
                 _context.Add(worker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Redirect("/Books/Create");
             }
             return View(worker);
         }

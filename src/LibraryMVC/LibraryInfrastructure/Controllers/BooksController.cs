@@ -36,6 +36,7 @@ namespace LibraryInfrastructure.Controllers
                 .Include(b => b.GenresBooks)
                     .ThenInclude(gb => gb.Genre)
                 .Include(b => b.ClientsBooks)
+                .Include(b => b.BookReservations)
                 .AsQueryable();
 
             if (!String.IsNullOrEmpty(searchString))
@@ -101,50 +102,36 @@ namespace LibraryInfrastructure.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
-            {
                 return Unauthorized("Користувач не авторизований.");
-            }
 
             var book = await _context.Books
                 .Include(b => b.ClientsBooks)
                 .FirstOrDefaultAsync(b => b.Id == id);
 
             if (book == null)
-            {
                 return NotFound("Книгу не знайдено.");
+
+            var reservation = await _context.BookReservations
+                .FirstOrDefaultAsync(br => br.BookId == id && br.UserId == user.Id && br.Status == "Заброньована");
+
+            if (reservation == null)
+            {
+                return BadRequest("Ця книга не була заброньована або вже позичена.");
             }
 
-            if (book.ClientsBooks.Any(cb => cb.ReturnDate == null))
-            {
-                return BadRequest("Ця книга вже позичена.");
-            }
+            reservation.Status = "Позичена";
+            _context.BookReservations.Update(reservation);
 
-            var client = await _context.Clients.FirstOrDefaultAsync(c => c.Id == user.Id);
-            if (client == null)
-            {
-                return NotFound("Користувач не зареєстрований як клієнт.");
-            }
-
-            var loan = new ClientsBook
-            {
-                BookId = id,
-                ClientId = client.Id,
-                BorrowingDate = DateOnly.FromDateTime(DateTime.Now),
-                ReturnDate = null
-            };
-
-            _context.ClientsBooks.Add(loan);
             await _context.SaveChangesAsync();
-
             return RedirectToAction(nameof(Index));
         }
-
 
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Return(int id)
         {
             var user = await _userManager.GetUserAsync(User);
+
             var loan = await _context.ClientsBooks
                 .FirstOrDefaultAsync(cb => cb.BookId == id && cb.ClientId.ToString() == user.Id && cb.ReturnDate == null);
 
@@ -155,9 +142,55 @@ namespace LibraryInfrastructure.Controllers
 
             loan.ReturnDate = DateOnly.FromDateTime(DateTime.Now);
             _context.ClientsBooks.Update(loan);
+
+            var reservation = await _context.BookReservations
+                .FirstOrDefaultAsync(br => br.BookId == id && br.UserId == user.Id && br.Status == "Позичена");
+
+            if (reservation != null)
+            {
+                reservation.Status = "Доступна";
+                _context.BookReservations.Update(reservation);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Librarian")]
+        public async Task<IActionResult> ChangeStatus(int bookId, string newStatus, int days)
+        {
+            var book = await _context.Books
+                .Include(b => b.BookReservations)
+                .FirstOrDefaultAsync(b => b.Id == bookId);
+
+            if (book == null) return NotFound();
+
+            // Отримуємо останнє бронювання
+            var latestReservation = book.BookReservations
+                .OrderByDescending(br => br.ReservationDate)
+                .FirstOrDefault();
+
+            if (latestReservation != null)
+            {
+                latestReservation.Status = newStatus;
+                latestReservation.DueDate = DateTime.UtcNow.AddDays(days);
+            }
+            else
+            {
+                var newReservation = new BookReservation
+                {
+                    BookId = bookId,
+                    Status = newStatus,
+                    ReservationDate = DateTime.UtcNow,
+                    DueDate = DateTime.UtcNow.AddDays(days)
+                };
+                _context.BookReservations.Add(newReservation);
+            }
+
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", new { id = bookId });
         }
 
         // GET: Books/Details/5
@@ -173,6 +206,8 @@ namespace LibraryInfrastructure.Controllers
                 .Include(b => b.Publisher)
                 .Include(b => b.AuthorsBooks).ThenInclude(ab => ab.Author)
                 .Include(b => b.GenresBooks).ThenInclude(gb => gb.Genre)
+                .Include(b => b.BookReservations)
+                .ThenInclude(br => br.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (book == null)
@@ -224,7 +259,7 @@ namespace LibraryInfrastructure.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create(Book book, int[] SelectedAuthors, int[] SelectedGenres)
+        public async Task<IActionResult> Create(Book book, int[] selectedAuthors, int[] selectedGenres)
         {
             ModelState.Remove("Publisher");
             ModelState.Remove("Worker");
@@ -243,8 +278,30 @@ namespace LibraryInfrastructure.Controllers
                 book.AddedBy = worker.Id;
             }
 
+            if (selectedAuthors == null || !selectedAuthors.Any())
+            {
+                ModelState.AddModelError("AuthorsBooks", "Оберіть хоча б одного автора");
+            }
+
+            if (selectedGenres == null || !selectedGenres.Any())
+            {
+                ModelState.AddModelError("GenresBooks", "Оберіть хоча б один жанр");
+            }
+
             if (ModelState.IsValid)
             {
+                book.AuthorsBooks = selectedAuthors.Select(authorId => new AuthorsBook
+                {
+                    AuthorId = authorId,
+                    Book = book
+                }).ToList();
+
+                book.GenresBooks = selectedGenres.Select(genreId => new GenresBook
+                {
+                    GenreId = genreId,
+                    Book = book
+                }).ToList();
+
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -256,8 +313,8 @@ namespace LibraryInfrastructure.Controllers
             }
 
             ViewData["Publishers"] = new SelectList(_context.Publishers, "Id", "Name", book.PublisherId);
-            ViewData["Authors"] = new MultiSelectList(_context.Authors, "Id", "FullName", SelectedAuthors);
-            ViewData["Genres"] = new MultiSelectList(_context.Genres, "Id", "GenreName", SelectedGenres);
+            ViewData["Authors"] = new MultiSelectList(_context.Authors, "Id", "FullName", selectedAuthors);
+            ViewData["Genres"] = new MultiSelectList(_context.Genres, "Id", "GenreName", selectedGenres);
 
             ViewBag.CurrentUserDisplay = user?.Email ?? "Невідомий користувач";
             ViewBag.CurrentWorkerId = worker?.Id ?? 0;
@@ -312,6 +369,16 @@ namespace LibraryInfrastructure.Controllers
 
             ModelState.Remove("Publisher");
             ModelState.Remove("Worker");
+
+            if (selectedAuthors == null || !selectedAuthors.Any())
+            {
+                ModelState.AddModelError("AuthorsBooks", "Оберіть хоча б одного автора");
+            }
+
+            if (selectedGenres == null || !selectedGenres.Any())
+            {
+                ModelState.AddModelError("GenresBooks", "Оберіть хоча б один жанр");
+            }
 
             if (ModelState.IsValid)
             {

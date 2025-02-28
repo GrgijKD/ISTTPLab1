@@ -22,6 +22,39 @@ namespace LibraryInfrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("BookReservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ReservationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BookReservations");
+                });
+
             modelBuilder.Entity("LibraryDomain.Model.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -35,6 +68,7 @@ namespace LibraryInfrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -112,7 +146,7 @@ namespace LibraryInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("LibraryDomain.Model.AuthorsBook", b =>
@@ -137,7 +171,7 @@ namespace LibraryInfrastructure.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("AuthorsBooks", (string)null);
+                    b.ToTable("AuthorsBooks");
                 });
 
             modelBuilder.Entity("LibraryDomain.Model.Book", b =>
@@ -167,16 +201,13 @@ namespace LibraryInfrastructure.Migrations
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("LibraryDomain.Model.Client", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -186,7 +217,7 @@ namespace LibraryInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clients", (string)null);
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("LibraryDomain.Model.ClientsBook", b =>
@@ -205,11 +236,12 @@ namespace LibraryInfrastructure.Migrations
                         .HasColumnType("date")
                         .HasColumnName("Borrowing date");
 
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int")
+                    b.Property<string>("ClientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("Client id");
 
-                    b.Property<DateOnly>("ReturnDate")
+                    b.Property<DateOnly?>("ReturnDate")
                         .HasColumnType("date")
                         .HasColumnName("Return date");
 
@@ -219,7 +251,7 @@ namespace LibraryInfrastructure.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("ClientsBooks", (string)null);
+                    b.ToTable("ClientsBooks");
                 });
 
             modelBuilder.Entity("LibraryDomain.Model.Genre", b =>
@@ -238,7 +270,7 @@ namespace LibraryInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres", (string)null);
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("LibraryDomain.Model.GenresBook", b =>
@@ -263,7 +295,7 @@ namespace LibraryInfrastructure.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("GenresBooks", (string)null);
+                    b.ToTable("GenresBooks");
                 });
 
             modelBuilder.Entity("LibraryDomain.Model.Publisher", b =>
@@ -281,7 +313,7 @@ namespace LibraryInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Publishers", (string)null);
+                    b.ToTable("Publishers");
                 });
 
             modelBuilder.Entity("LibraryDomain.Model.Worker", b =>
@@ -300,7 +332,7 @@ namespace LibraryInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Workers", (string)null);
+                    b.ToTable("Workers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -434,6 +466,24 @@ namespace LibraryInfrastructure.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("BookReservation", b =>
+                {
+                    b.HasOne("LibraryDomain.Model.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LibraryDomain.Model.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Book");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("LibraryDomain.Model.AuthorsBook", b =>

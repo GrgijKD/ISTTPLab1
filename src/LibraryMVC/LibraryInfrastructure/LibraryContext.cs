@@ -34,6 +34,8 @@ public partial class LibraryContext : IdentityDbContext<ApplicationUser>
 
     public virtual DbSet<Worker> Workers { get; set; }
 
+    public DbSet<BookReservation> BookReservations { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Server=Asus\\SQLEXPRESS; Database=Library; Trusted_Connection=True; TrustServerCertificate=True; ");
 
@@ -154,6 +156,12 @@ public partial class LibraryContext : IdentityDbContext<ApplicationUser>
                 .HasMaxLength(50)
                 .HasColumnName("Full name");
         });
+
+        modelBuilder.Entity<BookReservation>()
+            .HasOne(br => br.User)
+            .WithMany()
+            .HasForeignKey(br => br.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         OnModelCreatingPartial(modelBuilder);
     }
