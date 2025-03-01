@@ -4,13 +4,26 @@ using Microsoft.EntityFrameworkCore;
 using LibraryInfrastructure;
 using LibraryDomain.Model;
 using LibraryInfrastructure.Areas.Identity.Data;
+using Hangfire;
+using Hangfire.SqlServer;
 using System.Data.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Додаємо підключення до БД
 builder.Services.AddDbContext<LibraryContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Налаштовуємо Hangfire
+builder.Services.AddHangfire(config =>
+    config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+          .UseSimpleAssemblyNameTypeSerializer()
+          .UseRecommendedSerializerSettings()
+          .UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddHangfireServer();
+
+// Налаштовуємо Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
@@ -27,6 +40,7 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
+// Виконуємо ініціалізацію ролей та адміністратора
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -105,6 +119,28 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine($"Помилка оновлення клієнтів: {ex.Message}");
     }
 }
+
+app.UseHangfireDashboard();
+
+RecurringJob.AddOrUpdate<BookReservationsController>(
+    "expire-reservations",
+    x => x.ExpireReservations(),
+    "0 0 * * *",
+    new RecurringJobOptions()
+    {
+        TimeZone = TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time")
+    }
+);
+
+RecurringJob.AddOrUpdate<BookReservationsController>(
+    "check-overdue-reservations",
+    x => x.CheckOverdue(),
+    "0 0 * * *",
+    new RecurringJobOptions()
+    {
+        TimeZone = TimeZoneInfo.FindSystemTimeZoneById("FLE Standard Time")
+    }
+);
 
 if (!app.Environment.IsDevelopment())
 {

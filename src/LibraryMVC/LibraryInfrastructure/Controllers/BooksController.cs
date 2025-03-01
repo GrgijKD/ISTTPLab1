@@ -166,7 +166,6 @@ namespace LibraryInfrastructure.Controllers
 
             if (book == null) return NotFound();
 
-            // Отримуємо останнє бронювання
             var latestReservation = book.BookReservations
                 .OrderByDescending(br => br.ReservationDate)
                 .FirstOrDefault();

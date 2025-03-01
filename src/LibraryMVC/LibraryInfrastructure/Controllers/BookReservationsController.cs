@@ -84,4 +84,22 @@ public class BookReservationsController : Controller
 
         return RedirectToAction("Index", "Books");
     }
+
+    [Authorize(Roles = "Librarian")]
+    [HttpPost]
+    public async Task<IActionResult> ExpireReservations()
+    {
+        var expiredReservations = await _context.BookReservations
+            .Where(r => r.Status == "Заброньована" && r.DueDate < DateTime.UtcNow)
+            .ToListAsync();
+
+        foreach (var reservation in expiredReservations)
+        {
+            reservation.Status = "Доступна";
+        }
+
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Index", "Books");
+    }
 }
