@@ -158,7 +158,7 @@ namespace LibraryInfrastructure.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Librarian")]
-        public async Task<IActionResult> ChangeStatus(int bookId, string newStatus, int days)
+        public async Task<IActionResult> ChangeStatus(int bookId, string newStatus, int? days)
         {
             var book = await _context.Books
                 .Include(b => b.BookReservations)
@@ -173,7 +173,11 @@ namespace LibraryInfrastructure.Controllers
             if (latestReservation != null)
             {
                 latestReservation.Status = newStatus;
-                latestReservation.DueDate = DateTime.UtcNow.AddDays(days);
+
+                if ((newStatus == "Недоступна" || newStatus == "Прострочена") && days.HasValue)
+                {
+                    latestReservation.DueDate = DateTime.UtcNow.AddDays(days.Value);
+                }
             }
             else
             {
@@ -182,13 +186,15 @@ namespace LibraryInfrastructure.Controllers
                     BookId = bookId,
                     Status = newStatus,
                     ReservationDate = DateTime.UtcNow,
-                    DueDate = DateTime.UtcNow.AddDays(days)
+                    DueDate = (newStatus == "Недоступна" || newStatus == "Прострочена") && days.HasValue
+                        ? DateTime.UtcNow.AddDays(days.Value)
+                        : DateTime.UtcNow
                 };
+
                 _context.BookReservations.Add(newReservation);
             }
 
             await _context.SaveChangesAsync();
-
             return RedirectToAction("Details", new { id = bookId });
         }
 

@@ -57,16 +57,24 @@ nav.navbar {
     color: #3d2b1f !important;
 }
 
-.text-warning {
-    color: orange !important;
+.status-available {
+    color: green;
+    font-weight: bold;
 }
 
-.text-danger {
-    color: red !important;
+.status-unavailable {
+    color: black;
+    font-weight: bold;
 }
 
-.text-success {
-    color: green !important;
+.status-overdue {
+    color: red;
+    font-weight: bold;
+}
+
+.status-reserved {
+    color: darkgoldenrod;
+    font-weight: bold;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {

@@ -68,20 +68,20 @@
                         var reservation = item.Book.BookReservations.OrderByDescending(br => br.ReservationDate).FirstOrDefault();
                         var statusClass = reservation?.Status switch
                         {
-                            "Заброньована" => "text-warning",
-                            "Позичена" => "text-danger",
-                            "Прострочена" => "text-danger",
-                            _ => "text-success"
+                            "Заброньована" => "status-reserved",
+                            "Недоступна" => "status-unavailable",
+                            "Прострочена" => "status-overdue",
+                            _ => "status-available"
                         };
                         <span class="@statusClass">@reservation?.Status</span>
                     }
                     else if (item.Book.ClientsBooks.Any(cb => cb.ReturnDate == null))
                     {
-                        <span class="text-danger">Недоступна</span>
+                        <span class="status-unavailable">Недоступна</span>
                     }
                     else
                     {
-                        <span class="text-success">Доступна</span>
+                        <span class="status-available">Доступна</span>
                     }
                 </td>
                 <td>

@@ -24,9 +24,23 @@ public class BookReservationsController : Controller
         if (user == null)
             return Unauthorized();
 
-        var book = await _context.Books.FindAsync(bookId);
+        var book = await _context.Books
+            .Include(b => b.BookReservations)
+            .FirstOrDefaultAsync(b => b.Id == bookId);
+
         if (book == null)
             return NotFound();
+
+        var latestReservation = book.BookReservations
+            .OrderByDescending(br => br.ReservationDate)
+            .FirstOrDefault();
+
+        if (latestReservation != null && latestReservation.Status != "Доступна")
+        {
+            ModelState.AddModelError(string.Empty, "Книга недоступна для бронювання.");
+            TempData["Error"] = "Книга недоступна для бронювання.";
+            return RedirectToAction("Details", "Books", new { id = bookId });
+        }
 
         var reservation = new BookReservation
         {
@@ -55,24 +69,10 @@ public class BookReservationsController : Controller
 
     [Authorize(Roles = "Librarian")]
     [HttpPost]
-    public async Task<IActionResult> Lend(int reservationId)
-    {
-        var reservation = await _context.BookReservations.FindAsync(reservationId);
-        if (reservation == null)
-            return NotFound();
-
-        reservation.Status = "Позичена";
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction("Index", "Books");
-    }
-
-    [Authorize(Roles = "Librarian")]
-    [HttpPost]
     public async Task<IActionResult> CheckOverdue()
     {
         var overdueReservations = await _context.BookReservations
-            .Where(r => r.Status == "Позичена" && r.DueDate < DateTime.UtcNow)
+            .Where(r => r.Status == "Недоступна" && r.DueDate < DateTime.UtcNow)
             .ToListAsync();
 
         foreach (var reservation in overdueReservations)
@@ -81,7 +81,6 @@ public class BookReservationsController : Controller
         }
 
         await _context.SaveChangesAsync();
-
         return RedirectToAction("Index", "Books");
     }
 
@@ -90,7 +89,7 @@ public class BookReservationsController : Controller
     public async Task<IActionResult> ExpireReservations()
     {
         var expiredReservations = await _context.BookReservations
-            .Where(r => r.Status == "Заброньована" && r.DueDate < DateTime.UtcNow)
+            .Where(r => r.Status == "Заброньована" && r.ReservationDate.AddDays(1) < DateTime.UtcNow)
             .ToListAsync();
 
         foreach (var reservation in expiredReservations)

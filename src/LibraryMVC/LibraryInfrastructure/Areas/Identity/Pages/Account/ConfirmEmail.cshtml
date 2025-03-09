@@ -1,8 +1,16 @@
 ﻿@page
-@model ConfirmEmailModel
+@model LibraryInfrastructure.Areas.Identity.Pages.Account.ConfirmEmailModel
 @{
-    ViewData["Title"] = "Confirm email";
+    ViewData["Title"] = "Підтвердження електронної пошти";
 }
 
 <h1>@ViewData["Title"]</h1>
-<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div>
+    <h4>Email підтверджено!</h4>
+    <p>Тепер ви можете увійти в систему.</p>
+</div>
+
+<div>
+    <a asp-area="Identity" asp-page="/Account/Login">Вхід</a>
+</div>
